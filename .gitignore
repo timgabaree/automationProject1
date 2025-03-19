@@ -3,4 +3,8 @@
 blogger_credentials.json
 token.json
 blogger_token.json
+drive_credentials.json
+script_log.txt
 
+# Ignore credentials
+/Users/timgabaree/Library/CloudStorage/Dropbox/Projects/Python/Credentials/
