@@ -9,7 +9,7 @@ This project automates the process of generating blog posts using OpenAI's GPT-4
 - [Installation](#installation)
   - [Creating a Virtual Environment](#creating-a-virtual-environment)
   - [Installing Dependencies](#installing-dependencies)
-  - [Sample requirements.txt](#sample-requirements-.txt)
+  - [Sample requirements.txt](#sample-requirementstxt)
 - [Configuration](#configuration)
   - [.env File Setup](#env-file-setup)
   - [Directory Setup](#directory-setup)
