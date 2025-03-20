@@ -156,8 +156,6 @@ This will:
 	4.	Post the blog to Blogger.
 	5.	Post promotional messages to Bluesky and Twitter.
 
-Next in the markdown format is the Cron Job Setup section. Here is how it should be formatted:
-
 ⸻
 
 Cron Job Setup
@@ -177,7 +175,7 @@ This cron job:
 
 ⸻
 
-Troubleshooting
+## Troubleshooting
 
 Common Issues and Fixes
 
@@ -244,12 +242,12 @@ Solution:
 
 ⸻
 
-License
+## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 ⸻
 
-Contact
+## Contact
 
 For support or inquiries, contact tim@timgabaree.com.
