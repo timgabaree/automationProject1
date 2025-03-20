@@ -205,7 +205,7 @@ This runs the script at a **random time between 8 AM and 12 PM** on weekdays.
 
 ## License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License. See [LICENSE](ttps://github.com/timgabaree/automationProject1/tree/main/LICENSE.md) for details.
 
 ---
 
