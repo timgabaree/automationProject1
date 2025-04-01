@@ -234,7 +234,7 @@ def select_fixed_labels(content):
     """
     try:
         response = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4-turbo",
             messages=[{"role": "user", "content": prompt}],
             max_tokens=10,
             temperature=0.6
@@ -259,7 +259,7 @@ def generate_labels_from_ai(content, fixed_labels):
     """
     try:
         response = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4-turbo",
             messages=[{"role": "user", "content": prompt}],
             max_tokens=20,
             temperature=0.6
@@ -294,21 +294,30 @@ def generate_unique_topic(existing_titles, retries=5):
     for retry_count in range(retries):
         print(f"🔄 Generating AI-based topic (Attempt {retry_count + 1})...")
         topic_prompt = (
-            f"Generate a unique and engaging blog post topic about AI, cybersecurity, IT leadership, servant leadership, mentoring, or collaboration. "
-            f"Ensure it is concise and free of unnecessary words. Do NOT generate a topic similar to these: {', '.join(last_30_titles)}."
+            "Give me a short, original blog post title only. Do not include quotation marks or any prefixes like 'Blog Topic:', 'Title:', etc. "
+            "Avoid topics similar to any of the following recent blog titles:\n"
+            f"{chr(10).join(last_30_titles)}"
+            "\nMake sure the title is about AI, cybersecurity, IT leadership, mentoring, or servant leadership—but sounds fresh and human."
         )
         try:
             response = client.chat.completions.create(
-                model="gpt-4",
+                model="gpt-4-turbo",
                 messages=[{"role": "user", "content": topic_prompt}],
-                max_tokens=20,
+                max_tokens=12,
                 temperature=0.7,
                 timeout=15
             )
             new_topic = response.choices[0].message.content.strip()
-            if not is_topic_duplicate(new_topic, existing_titles) and new_topic not in last_30_titles:
-                print(f"✅ Selected unique topic: {new_topic!r}")
-                return new_topic
+
+            # 🧹 Remove common prefixes like "Blog Topic:", "Title:", or "Topic:"
+            new_topic = re.sub(r'^(Blog Topic|Title|Topic)\s*[:\-–—]\s*', '', new_topic, flags=re.IGNORECASE)
+
+            # 🧼 Trim leading/trailing quotes, spaces, tabs, and limit length
+            new_topic = new_topic[:100].strip(" \"'\n\t")
+
+            # ✅ Ensure the title ends with punctuation
+            if not new_topic.endswith(('.', '!', '?')):
+                new_topic += "."
         except requests.exceptions.Timeout:
             print("⚠️ OpenAI API timed out while generating a topic. Retrying...")
             time.sleep(2)
@@ -338,7 +347,7 @@ def generate_blog_post():
     print(f"✅ Generating blog post on: {topic!r}")
     try:
         response = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4-turbo",
             messages=[{"role": "user", "content": prompt}],
             max_tokens=2000,
             temperature=0.4,

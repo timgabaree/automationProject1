@@ -37,7 +37,7 @@ This script handles the full workflow:
 
 - **Automated Blog Generation:** Unique posts with actionable insights and industry trends.
 - **AI-Generated Imagery:** Custom images created by DALL·E with fallback support.
-- **Image Processing:** Resizes and compresses images for Bluesky’s file size limits.
+- **Image Processing:** Resizes and compresses images for BlueSky’s file size limits.
 - **Multi-Platform Posting:** Automatically posts to Blogger, Bluesky, Twitter, and Twitter Premium.
 - **Topic Deduplication:** Tracks past topics to avoid repetition.
 - **Logging:** Detailed logs for monitoring and troubleshooting.
@@ -109,7 +109,7 @@ Create a `requirements.txt` file in the project root and add the following:
 
 ### .env File Setup
 
-Create a `.env` file **outside** of the project directory (for security) and populate it with the following variables:
+Create a `.env` file outside the project directory (for security) and populate it with the following variables:
    ```
    OPENAI_API_KEY=your_openai_api_key
    GOOGLE_SERVICE_ACCOUNT_FILE=/absolute/path/to/google_service_account.json

@@ -1,4 +1,3 @@
-import os
 import subprocess
 
 SOURCE_DIR = "/Users/timgabaree/Library/CloudStorage/Dropbox/Projects/Python/automationProject1/media/"
